@@ -1,14 +1,9 @@
 
 import { Router } from 'express';
-import axios from 'axios';
+import contactRoutes from './contact.js';
 
 const routes = new Router();
 
-routes.get('/contacts/sync', (req, resp) => {
-    axios.get('https://challenge.trio.dev/api/v1/contacts')
-      .then(result => {
-        resp.send(result.data)
-      });
-});
+routes.use('/contacts', contactRoutes);
 
 export default routes;
