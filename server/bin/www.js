@@ -4,6 +4,8 @@ import debug from 'debug';
 import dnscache from 'dnscache';
 import http from 'http';
 import https from 'https';
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 http.globalAgent.keepAlive = true;
 https.globalAgent.keepAlive = true;
@@ -16,4 +18,4 @@ dnscache({
 
 const log = debug('trio:www');
 
-app.listen(3000, () => log('server started'));
+app.listen(process.env.PORT || 8080, () => log('server started'));
